@@ -47,7 +47,7 @@ for i in range(len(imgs)):
     imgs_draw.append(img_draw)
 
 
-
+    
 chessboard_points = get_chessboard_points((7, 9), 20, 20)
 objpoints = []
 for _ in range(len(imgs)):

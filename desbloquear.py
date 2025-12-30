@@ -20,7 +20,10 @@ buffer = []
 
 def actualizar_buffer(token):
     global buffer
-
+    if token == "Reset Contraseña":
+        buffer = []
+        print("Buffer reseteado")
+        return False
     buffer.append(token)
     print("Secuencia actual:", buffer)
 
@@ -62,19 +65,17 @@ while True:
     if token is not None:
         if actualizar_buffer(token):
             sistema_desbloqueado = True
-            ultimo_token = None
-            qr_visible = False
             break  # → saltamos a la etapa del tracker
     cv2.imshow("Sistema de seguridad - QR", frame)
 
     if cv2.waitKey(1) & 0xFF == 27:  # ESC
         break
 
+if sistema_desbloqueado:
+    print("FUNCIONA")  # aquí arranca el tracker
+
+
 cap.release()
 cv2.destroyAllWindows()
-
-if sistema_desbloqueado:
-    print("AAAAAAA FUNCIONA")  # aquí arranca el tracker
-
 
 
